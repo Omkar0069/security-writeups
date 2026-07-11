@@ -1,0 +1,155 @@
+# STRUCTURE
+# [Lab Name] — [Vuln Category]
+
+## Summary
+One sentence: what the vulnerability was.
+
+## Steps to Reproduce
+1. Went to X endpoint
+2. Sent this payload: `payload here`
+3. Observed Y response/behavior
+4. This confirmed Z vulnerability
+
+## Impact
+What an attacker could actually do with this (steal session, read other users' data, etc.)
+
+## Fix
+1-2 lines on the real-world remediation
+
+# [Server-Side-Vulnerability] — [File path traversal, simple casey]
+
+## Summary
+ This lab contains a path traversal vulnerability in the display of product images.
+
+To solve the lab, retrieve the contents of the /etc/passwd file.
+
+**Fix**
+1. Went to URL bar
+2. Added ../../../etc/passwd
+3. Press Enter
+
+
+# [Server-Side-Vulnerability] — [Unprotected admin functionality]
+
+## Summary
+ This lab has an unprotected admin panel.
+
+Solve the lab by deleting the user carlos. 
+
+**Fix**
+1. Went to URL bar
+2. Added robots.txt (It show all the hidden dirs from user)
+3. Press Enter
+4. Saw /adminstrator-panel in robots.txt
+5. Went to /adminstrator-panel directory
+6. Deleted Carlos
+
+# [Server-Side-Vulnerability] — [Unprotected admin functionality with unpredictable URL]
+
+## Summary
+ This lab has an unprotected admin panel. It's located at an unpredictable location, but the location is disclosed somewhere in the application.
+
+Solve the lab by accessing the admin panel, and using it to delete the user carlos. 
+
+**Fix**
+1. Went to URL bar
+2. View the page source
+3. Observed that it contains some javascript that discloses some sensitive directory
+4. Went to that directory (/admin-il7o6t)
+5. Deleted Carlos
+
+
+# [Server-Side-Vulnerability] — [User role controlled by request parameter]
+
+## Summary
+
+This lab has an admin panel at /admin, which identifies administrators using a forgeable cookie.
+
+Solve the lab by accessing the admin panel and using it to delete the user carlos.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+**Fix**
+1. Login to my account
+2. Go to inspect accessibility properties -> storage -> cookies -> set Admin = true
+3. Go to URL bar set my-account?id=admin
+4. Go to Admin Panel 
+5. Delete Carlos
+
+# [Server-Side-Vulnerability] — [User ID controlled by request parameter, with unpredictable user IDs]
+
+## Summary
+
+ This lab has a horizontal privilege escalation vulnerability on the user account page, but identifies users with GUIDs.
+
+To solve the lab, find the GUID for carlos, then submit his API key as the solution.
+
+You can log in to your own account using the following credentials: wiener:peter 
+
+**Fix**
+1. In home page, go to the post by carlos
+2. In URL bar copy his GUID
+3. Login to your account
+4. Change the URL bar from your id to carlos'
+5. Copy his API key and submit
+
+# [Server-Side-Vulnerability] — [User ID controlled by request parameter with password disclosure]
+
+## Summary
+
+This lab has user account page that contains the current user's existing password, prefilled in a masked input.
+
+To solve the lab, retrieve the administrator's password, then use it to delete the user carlos.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+
+**Fix**
+1. Login to your account
+2. In URL bar replace your name with administrator
+3. Go to the page source 
+4. Check for the disclosed password in Javascript
+5. Copy the password and login to administrator's account
+6. Go to Admin Panel
+7. Delete Carlos
+
+# [Server-Side-Vulnerability] — [Username enumeration via different responses]
+
+## Summary
+
+ This lab is vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable username and password, which can be found in the following wordlists:
+
+    Candidate usernames
+    Candidate passwords
+
+To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
+
+**Fix**
+1. Make sure you are intercepting the page via burpsuite in Portswigger
+2. enter a demo credential to obtain the POST method on login page
+3. Go to burpsuite
+4. Send that request to the intruder
+5. Inside intruder clear all auto set markers and only select the username field
+6. Select attack type to sniper
+7. In payload type enter the usernames list 
+8. Start Attack
+9. After the attack is complete see the length column most of them are identical but for the right response the length field may give different output
+10. Repeat again the same, this time with password field and make sure to enter the right username you got from previous attack
+11. Enter the credentials and login
+
+# [Server-Side-Vulnerability] — [2FA simple bypass]
+
+## Summary
+
+ This lab's two-factor authentication can be bypassed. You have already obtained a valid username and password, but do not have access to the user's 2FA verification code. To solve the lab, access Carlos's account page.
+
+    Your credentials: wiener:peter
+    Victim's credentials carlos:montoya
+
+
+**Fix**
+1. Login to your account and complete the 2 step verification
+2. In URL bar note your URL after login
+3. Now enter the credentials of carlos
+4. When prompted for the otp
+5. Manually edit the URL to navigate to /my-account
