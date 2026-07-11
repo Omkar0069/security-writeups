@@ -153,3 +153,38 @@ To solve the lab, enumerate a valid username, brute-force this user's password, 
 3. Now enter the credentials of carlos
 4. When prompted for the otp
 5. Manually edit the URL to navigate to /my-account
+
+# [Server-Side-Vulnerability] — [Basic SSRF against the local server]
+
+## Summary
+
+This lab has a stock check feature which fetches data from an internal system.
+
+To solve the lab, change the stock check URL to access the admin interface at http://localhost/admin and delete the user carlos. 
+
+**Fix**
+1. Go to the home tab
+2. Click on view details of any product
+3. Right click and go to Inspect
+4. In stock API replace the url with http://localhost/admin
+5. Run this query
+6. Now the page will be updated with some sensitive data to delete carlos and weiner
+7. Delete carlos
+8. New page will open copy that url and use that in stock API again
+9. Rerun this query 
+
+# [Server-Side-Vulnerability] — [Basic SSRF against another back-end system]
+
+## Summary
+
+ This lab has a stock check feature which fetches data from an internal system.
+
+To solve the lab, use the stock check functionality to scan the internal 192.168.0.X range for an admin interface on port 8080, then use it to delete the user carlos. 
+
+**Fix**
+1. Visit a product, click Check stock, intercept the request in Burp Suite, and send it to Burp Intruder.
+2. Change the stockApi parameter to http://192.168.0.1:8080/admin then highlight the final octet of the IP address (the number 1) and click Add §.
+3. In the Payloads side panel, change the payload type to Numbers, and enter 1, 255, and 1 in the From and To and Step boxes respectively.
+4. Click Start attack.
+5. Click on the Status column to sort it by status code ascending. You should see a single entry with a status of 200, showing an admin interface.
+6. Click on this request, send it to Burp Repeater, and change the path in the stockApi to: /admin/delete?username=carlos 
