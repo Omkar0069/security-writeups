@@ -188,3 +188,43 @@ To solve the lab, use the stock check functionality to scan the internal 192.168
 4. Click Start attack.
 5. Click on the Status column to sort it by status code ascending. You should see a single entry with a status of 200, showing an admin interface.
 6. Click on this request, send it to Burp Repeater, and change the path in the stockApi to: /admin/delete?username=carlos 
+
+# [Server-Side-Vulnerability] — [Remote code execution via web shell upload]
+
+## Summary
+
+ This lab contains a vulnerable image upload function. It doesn't perform any validation on the files users upload before storing them on the server's filesystem.
+
+To solve the lab, upload a basic PHP web shell and use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter 
+
+**Fix**
+1. Login to your account using the given credentials
+2. You will find and upload option
+3. Create a file name with .php extension and write the following code <?php echo file_get_contents("/home/carlos/secret"); ?>
+4. Upload this file
+5. Right click on the avatar
+6. Submit the solution
+
+# [Server-Side-Vulnerability] — [Web shell upload via Content-Type restriction bypass]
+
+## Summary
+
+This lab contains a vulnerable image upload function. It attempts to prevent users from uploading unexpected file types, but relies on checking user-controllable input to verify this.
+
+To solve the lab, upload a basic PHP web shell and use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter 
+
+**Fix**
+1. Login to your account using the given credentials
+2. You will find and upload option
+3. Create a file name with .php extension and write the following code <?php echo file_get_contents("/home/carlos/secret"); ?>
+4. Upload this file
+5. You will get an error
+6. Now send this post request to repeater in burpsuite
+7. Change the content-type to image/jpeg or image/png
+8. Send this request 
+9. Right click on the avatar
+10. Submit the solution
