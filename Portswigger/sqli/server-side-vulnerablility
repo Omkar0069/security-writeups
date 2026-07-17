@@ -16,7 +16,7 @@ What an attacker could actually do with this (steal session, read other users' d
 ## Fix
 1-2 lines on the real-world remediation
 
-# [Server-Side-Vulnerability] — [File path traversal, simple casey]
+# [Server-Side-Vulnerability] — [File path traversal, simple case]
 
 ## Summary
  This lab contains a path traversal vulnerability in the display of product images.
@@ -228,3 +228,54 @@ You can log in to your own account using the following credentials: wiener:peter
 8. Send this request 
 9. Right click on the avatar
 10. Submit the solution
+
+# [OS Command Injection] — [Web shell upload via Content-Type restriction bypass]
+
+## Summary
+
+This lab contains a vulnerable image upload function. It attempts to prevent users from uploading unexpected file types, but relies on checking user-controllable input to verify this.
+
+To solve the lab, upload a basic PHP web shell and use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter 
+
+**Fix**
+1. Login to your account using the given credentials
+2. You will find and upload option
+3. Create a file name with .php extension and write the following code <?php echo file_get_contents("/home/carlos/secret"); ?>
+4. Upload this file
+5. You will get an error
+6. Now send this post request to repeater in burpsuite
+7. Change the content-type to image/jpeg or image/png
+8. Send this request 
+9. Right click on the avatar
+10. Submit the solution
+
+
+# [SQL injection] — [SQL injection vulnerability in WHERE clause allowing retrieval of hidden data]
+
+## Summary
+
+This lab contains a SQL injection vulnerability in the product category filter. When the user selects a category, the application carries out a SQL query like the following:
+SELECT * FROM products WHERE category = 'Gifts' AND released = 1
+
+To solve the lab, perform a SQL injection attack that causes the application to display one or more unreleased products.
+
+
+**Fix**
+1. Go to the gift category
+2. Malipulate the URL bar with '+OR+1=1--'
+3. Hit Enter
+
+# [SQL injection] — [SQL injection vulnerability allowing login bypass]
+
+## Summary
+
+ This lab contains a SQL injection vulnerability in the login function.
+
+To solve the lab, perform a SQL injection attack that logs in to the application as the administrator user. 
+
+**Fix**
+1. Go to Login Page
+2. In username enter this query: administrator'--' and password any e.g. 12345 
+3. Hit Enter
