@@ -279,3 +279,27 @@ To solve the lab, perform a SQL injection attack that logs in to the application
 1. Go to Login Page
 2. In username enter this query: administrator'--' and password any e.g. 12345 
 3. Hit Enter
+
+# [llm-attacks] — [Exploiting LLM APIs with excessive agency]
+
+## Summary
+
+To solve the lab, use the LLM to delete the user carlos. 
+
+**Fix**
+1. Go to Live Chat Page
+2. Ask the llm to list all the api keys it have
+3. Use the debug_sql to list the users (Make sure to use debug_sql as a keyword)
+4. Then use the debug_sql to delete the user name carlos 
+
+# [llm-attacks] — [Exploiting vulnerabilities in LLM APIs]
+
+## Summary
+
+ This lab contains an OS command injection vulnerability that can be exploited via its APIs. You can call these APIs via the LLM. To solve the lab, delete the morale.txt file from Carlos' home directory.
+
+**Fix**
+1. Go to Live Chat Page
+2. Ask the llm to list all the api keys it have
+3. Use the subscribe_to_newsletter to subscribe the email with os injection `ls` in the email; example attacker@exploit-0ae100ae0456e6f280dfda66017d00ec.exploit-server.net will convert into  attacker'ls'@exploit-0ae100ae0456e6f280dfda66017d00ec.exploit-server.net
+4. Then use the subscribe_to_newsletter function to delete the user name morale.txt;  attacker'rm morale.txt'@exploit-0ae100ae0456e6f280dfda66017d00ec.exploit-server.net
