@@ -195,3 +195,96 @@ Perform authentication and authorization on the server using sessions or access 
 
 ## Key Takeaways
 - Sensitive data should never be placed in robots.txt because the file is publicly accessible. Anyone can read it directly, making it unsuitable for hiding directories, files, or confidential information.
+
+# Natas Level 5 -> 6
+
+## Objective
+Find the password for Natas Level 6.
+
+## Enumeration
+- Logged into the application using the provided credentials.
+- Portswigger.
+
+## Finding
+Sending request head to repeater.
+
+## Steps
+1. I intercepted the traffic through burpsuite.
+2. Then I saw the request head where isLogin was set to 0.
+3. I send that query to repeater and changed it to 1.
+4. Then I got the password in response.
+
+## Why It Worked
+Changing the login query to 1 lead to get the password.
+
+## Security Concept
+Never solely rely on 1 argument which can intercepted easily.
+
+## Real-World Impact
+An attacker can spoof the argument and gain sensitive information.
+
+## Key Takeaways
+Never rely on single authentication which can easily be bypassed.
+
+# Natas Level 6 -> 7
+
+## Objective
+Find the password for Natas Level 7.
+
+## Enumeration
+- Logged into the application using the provided credentials.
+- Directories.
+
+## Finding
+Secret directories.
+
+## Steps
+1. I viewed the source code with the given link.
+2. I found includes/secret.inc directory.
+3. I visited that directory.
+4. I went to the source page where I found the secret.
+5. I copied that secret and pasted in the input field on the home page.
+6. Got the pass for natas7.
+
+## Why It Worked
+I knew it.
+
+## Security Concept
+Never put sensitive info in client side model even if it is a secret directory it can be intercepted or break.
+
+## Real-World Impact
+An attacker can use that sensitive data for bad use.
+
+## Key Takeaways
+Sensitive data should be kept in severside encrypted.
+
+# Natas Level 7 -> 8
+
+## Objective
+Find the password for Natas Level 8.
+
+## Enumeration
+- Logged into the application using the provided credentials.
+- URL Path.
+
+## Finding
+URL Path.
+
+## Steps
+1. I viewed the source code.
+2. I found the path for the password.
+3. I visited that home directory.
+4. I manipulated the URL in the bar removed home and pasted the path I found in the source code.
+5. Got the pass for natas8.
+
+## Why It Worked
+Changing the URL provided the password.
+
+## Security Concept
+Never put sensitive info in client side model even if it is a secret directory it can be intercepted or break.
+
+## Real-World Impact
+An attacker can use that sensitive data for bad use.
+
+## Key Takeaways
+Sensitive data should be kept in severside encrypted.
