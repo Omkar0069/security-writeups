@@ -288,3 +288,61 @@ An attacker can use that sensitive data for bad use.
 
 ## Key Takeaways
 Sensitive data should be kept in severside encrypted.
+
+# Natas Level 8 -> 9
+
+## Goal
+Find the password for the next level.
+
+---
+
+## Vulnerability
+Encoded secret was on source code.
+
+---
+
+## Solution
+1. I visited the source code via view source code option.
+2. I got an encoded secret.
+3. Then I use decoder tool from burpsuite and encoded the secret in ascii hex -> reversed string -> base64
+4. I got the Input secret and Entered it in the input field.
+5. I got the password for the next level.
+
+---
+
+## Tool
+Decoder
+---
+
+## Key Takeaway
+- We can decrypt the data through decoder tool.
+- Sensitive data should not be put on client side module.
+
+# Natas Level 9 -> 10
+
+## Goal
+Find the password for the next level.
+
+---
+
+## Vulnerability
+Encoded secret was on source code.
+
+---
+
+## Solution
+1. I visited the source code via view source code option.
+2. I got an encoded secret.
+3. Then I use decoder tool from burpsuite and encoded the secret in ascii hex -> reversed string -> base64
+4. I got the Input secret and Entered it in the input field.
+5. I got the password for the next level.
+
+---
+
+## Tool
+Decoder
+---
+
+## Key Takeaway
+- We can decrypt the data through decoder tool.
+- Sensitive data should not be put on client side module.
