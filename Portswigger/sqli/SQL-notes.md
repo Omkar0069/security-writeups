@@ -108,3 +108,68 @@ CREATE TABLE products(
 INSIDE EXISTING ONE:
 ALTER TABLE products
 ALTER product_price SET DEFAULT 0.00;
+
+**PRIMARY KEY**
+Primary key to any give column make sure that the data present in that column does not repeat if the same data is repeated it will give an error.
+Syntax: while creating a table
+CREATE TABLE transactions(
+    transaction_id INT PRIMARY KEY,
+    amount DECIMAL(5, 2)
+);
+
+SELECT * FROM transactions
+*This will create a table name transactions and add column transaction_id and amount Primary key is the transaction_id meaning every transaction_id need to be unique and cannot be repeated.*
+
+Syntax: Into existing table
+ALTER TABLE transactions
+ADD CONSTRAINT
+PRIMARY KEY(transaction_id);
+SELECT * FROM transactions
+*This will add Primary key to transaction_id in an existing table called transactions.*
+**NOTE: ONE TABLE WILL HAVE ONLY ONE PRIMARY KEY CONSTRAINT AND WE CANNOT SET IT TO NULL.**
+
+**AUTO-INCREMENT**
+As the name indicate it auto increments the respective value to the Primary Key contraint.
+Syntax: While creating a new table
+CREATE TABLE transactions(
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    amount DECIMAL(5,2)
+);
+SELECT * FROM transactions;
+
+We can change the starting point of auto increment:
+ALTER INTO transactions
+AUTO_INCREMENT = 100;
+SELECT * FROM transactions; 
+
+**FOREIGN KEY**
+Think Foreign Key as a Primary Key from one table that can be found in the other table, using a foreign key we can establish connection between 2 tables.
+
+First we need to create a table called customers: 
+CREATE TABLE customers (
+	customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50)
+);
+
+SELECT FROM * customers;
+Then populate it with some values.
+
+Then create another table using foreign key to connect it with customers table:
+CREATE TABLE transactions(
+	transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    amount DECIMAL(5,2),
+    customer_id INT,
+    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+);
+
+SELECT * FROM transactions;
+
+To drop a foreign key:
+ALTER TABLE transactions
+DROP FOREIGN KEY transaction_ibfk_1;
+
+To give a specific name for the foreign id:
+ALTER TABLE transactions
+ADD CONSTRAINT fk_customer_id
+FOREIGN KEY(customer_id) REFRENCES customers(customer_id);
