@@ -173,3 +173,5 @@ To give a specific name for the foreign id:
 ALTER TABLE transactions
 ADD CONSTRAINT fk_customer_id
 FOREIGN KEY(customer_id) REFRENCES customers(customer_id);
+
+**JOINS**
