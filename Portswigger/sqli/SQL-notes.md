@@ -177,4 +177,23 @@ ALTER TABLE transactions
 ADD CONSTRAINT fk_customer_id
 FOREIGN KEY(customer_id) REFRENCES customers(customer_id);
 
-**JOINS**
+# THEORY
+A Database doesn't store data tables do.
+A table is made up of:
+Column: define what kind of data can be stored.
+Rows: The actual records.
+
+# Data Types
+Each column has datatype that define what kind of data it can store.
+
+1. INT - Stores whole numbers
+2. VARCHAR(n) - Stores text, the n defines the length of the text.
+3. CHAR(n) - Stores fixed length text.
+4. TEXT - Stores long text
+5. DATE - Stores the date
+6. BOOLEAN - Stores true or false.
+7. CONSTRAINTS - It tells data how to behave.
+8. PRIMARY KEY - Uniquely Identifies each row. Duplicate primary keys are not allowed e.g., id INT PRIMARY KEY 
+9. AUTO_INCREMENT - Automatically increases the number.
+10. NOT NULL - The column must contain values. e.g., username VARCHAR(50) NOT NULL
+11. UNIQUE - No duplicate allowed e.g., email VARCHAR(50) UNIQUE
