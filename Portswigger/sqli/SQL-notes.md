@@ -5,6 +5,9 @@ There are 2 types of database we'll discuss; Relational and Non-Relational:
 
 To utilize data in **Relational database** we use SQL and in **Non-Relational database** we use NO-SQL.
 
+**DATABASE**
+Database is a place where data is collected managed and stored. A Database Management System (DBMS) lets us store, retrieve, update, and delete this data efficiently.
+
 # PRACTICAL IN MYSQL-Workbench:
 **To create a database** use *CREATE DATABASE nameofdb;*.
 **TO use that database** use *USE nameofdb;*.
