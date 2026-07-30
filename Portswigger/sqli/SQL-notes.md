@@ -13,3 +13,22 @@ VARCHAR(n) — variable-length text, max n chars
 TEXT — long text
 DATE / DATETIME — dates
 BOOLEAN — true/false
+
+# TOPIC 2: SELECT'
+**Most important command!**
+
+Syntax: SELECT column_name FROM table_name;
+* -> Everything
+
+e.g., SELECT * FROM users;
+
+**SELECT DISTINCT**
+Removes duplicate values from the result.
+
+SELECT DISTINCT country FROM users;
+
+If 500 users are from India, this returns "India" once instead of 500 times. Useful for recon — e.g. figuring out how many unique roles exist in a users table.
+
+**SELECT AS**
+Renames a column in the output only — doesn't touch the actual table.
+e.g., SELECT username AS user_name FROM users;
