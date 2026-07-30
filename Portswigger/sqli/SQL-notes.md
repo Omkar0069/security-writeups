@@ -177,6 +177,9 @@ ALTER TABLE transactions
 ADD CONSTRAINT fk_customer_id
 FOREIGN KEY(customer_id) REFRENCES customers(customer_id);
 
+**JOINS**
+
+
 # THEORY
 A Database doesn't store data tables do.
 A table is made up of:
@@ -197,3 +200,14 @@ Each column has datatype that define what kind of data it can store.
 9. AUTO_INCREMENT - Automatically increases the number.
 10. NOT NULL - The column must contain values. e.g., username VARCHAR(50) NOT NULL
 11. UNIQUE - No duplicate allowed e.g., email VARCHAR(50) UNIQUE
+
+**ORDER BY**
+As name indicates it order the data
+Syntax:
+SELECT column1, column2
+FROM table_name
+ORDER BY column_name;
+
+**Types:**
+1. Ascending - ASC (Smallest to Largest)
+2. Descending - DESC (Largest to Smallest)
