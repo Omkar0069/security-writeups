@@ -326,23 +326,63 @@ Find the password for the next level.
 ---
 
 ## Vulnerability
-Encoded secret was on source code.
+OS Command Injection
 
 ---
 
 ## Solution
 1. I visited the source code via view source code option.
-2. I got an encoded secret.
-3. Then I use decoder tool from burpsuite and encoded the secret in ascii hex -> reversed string -> base64
-4. I got the Input secret and Entered it in the input field.
-5. I got the password for the next level.
+2. Then I enter the command in search bar: ; cat /etc/natas_webpass/natas10
+3. I got the password for the next level.
 
 ---
 
 ## Tool
-Decoder
+PHP and command knowlege.
 ---
 
 ## Key Takeaway
-- We can decrypt the data through decoder tool.
-- Sensitive data should not be put on client side module.
+The shell recognizes:
+command1 ; command2
+as two separate commands.
+Because the application didn't sanitize or escape your input, your input became part of the shell syntax instead of remaining plain text.
+
+This is the essence of command injection.
+
+# Natas Level 10 → 11
+
+## Goal
+
+Find the password for the next level.
+
+---
+
+## Vulnerability
+
+The application stored a client-side encoded secret inside a cookie. Since the cookie was only encoded and not securely protected, it could be decoded, modified, and re-encoded to change its value.
+
+---
+
+## Solution
+
+1. Inspected the page source and application behavior.
+2. Identified the encoded data stored in the cookie.
+3. Used Burp Suite Decoder to decode the value and analyzed its structure.
+4. Modified the decoded data to change the relevant parameter.
+5. Re-encoded the modified value and replaced the original cookie.
+6. Refreshed the page and obtained the password for the next level.
+
+---
+
+## Tool
+
+* Burp Suite Decoder
+
+---
+
+## Key Takeaways
+
+* Client-side data should never be trusted for security decisions.
+* Encoding is **not** a security mechanism; anyone can decode and modify encoded data.
+* Sensitive information and authorization logic should always be validated on the server.
+* Cookies should be protected with integrity mechanisms (e.g., signatures) if their contents affect application behavior.
