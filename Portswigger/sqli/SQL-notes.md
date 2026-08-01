@@ -97,3 +97,41 @@ e.g., SELECT country, COUNT(*) FROM users GROUP BY country;
 
 **GROUP_CONCAT** merges all values in a group into one comma-separated string.
 SELECT country, GROUP_CONCAT(username) FROM users GROUP BY country;
+
+# TOPIC 8: HAVING
+Having filters after grouping - it's like WHERE but for aggregate results instead of raw rows.
+WHERE: Filters row before grouping happens
+HAVING: Filters row after aggregation happens
+HANDS ON:
+SELECT country, COUNT(*) FROM users GROUP BY country HAVING COUNT(*) > 1;
+SELECT country, COUNT(*) FROM users GROUP BY country HAVING COUNT(*) = 1;
+
+# TOPIC 9: INSERT
+Adds new row to the table.
+Syntax: INSERT INTO tablename (columnn1, column2...) VALUES (value1, value2...);
+
+**SQLi relevance**
+Low, for the same reason as CREATE TABLE — you're not inserting data into someone else's live application database as an attacker (well, in blind cases you technically could via a stored/second-order XSS-adjacent injection, but that's an edge case, not core SQLi). The main value here is being able to build realistic practice data for yourself, which you're already doing.
+
+One place INSERT-style injection does matter: stored/second-order SQLi, where user input (like a comment or profile bio) gets stored unsanitized via an app's own INSERT statement, and the malicious payload only executes later when that stored data gets pulled into a different, vulnerable SELECT query. Worth knowing the term now — you'll hit it properly later in your roadmap.
+
+# TOPIC 10: UPDATE
+Modifies existing row.
+Syntax: UPDATE table_name SET column = new_value WHERE condition;
+
+**SQLi relevance**
+
+Low as something you'll write against a target — but understanding UPDATE matters for a specific class of real vulnerabilities: apps that build UPDATE queries from user input unsafely (e.g. a "change my email" form) are just as injectable as SELECT-based ones. The injection mechanics (breaking out of a string with ', using comments) are identical — only the query type differs.
+
+# TOPIC 11: DELETE
+Removes rows.
+Syntax: DELETE FROM table_name WHERE condition;
+
+Same warning as UPDATE — even more destructive
+
+DELETE FROM users;
+
+No WHERE = every row in the table gone. Unlike UPDATE, there's no "wrong value" to fix afterward — the data is just gone (unless you have a backup). Always run a SELECT with the same WHERE clause first to confirm exactly which rows you're about to hit, before running the DELETE.
+
+SELECT * FROM users WHERE country = 'France'; --check first
+DELETE FROM users WHERE country = 'France'; --then delete
