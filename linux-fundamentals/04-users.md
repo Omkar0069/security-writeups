@@ -102,3 +102,40 @@ This is a real enumeration step after landing any shell — `groups` or `id` tel
 
 ---
 
+## `sudo` — Superuser Do
+
+**What it does:**
+Runs a single command with elevated (usually root) privileges, without you having to fully switch to the root account. It's the controlled, logged alternative to logging in as root directly — each use requires your own password (not root's) and gets recorded, which is central to why it's the standard on modern Linux instead of just handing out root logins.
+
+**Syntax:**
+```
+sudo command                  # run one command as root
+sudo -l                        # list what commands YOU are allowed to run with sudo
+sudo -u username command       # run as a specific user, not necessarily root
+sudo -i                        # start an interactive root shell
+sudo su -                      # alternative way to get a root shell
+```
+
+**Example:**
+```
+$ cat /etc/shadow
+cat: /etc/shadow: Permission denied
+
+$ sudo cat /etc/shadow
+[sudo] password for omkar: 
+root:$6$abcd...:19870:0:99999:7:::
+testuser:$6$efgh...:19870:0:99999:7:::
+
+$ sudo -l
+User omkar may run the following commands on kali:
+    (ALL : ALL) ALL
+```
+
+**Why it matters for pentesting:**
+`sudo -l` is one of the very first commands you run after landing *any* shell on a target, right alongside `id` and `groups` — it tells you exactly which commands you're allowed to run as root without a password (`NOPASSWD` entries are especially interesting), which is a direct enumeration step toward privesc. If `sudo -l` shows you can run something like `find`, `vim`, or `less` as root with `NOPASSWD`, that's an immediate GTFOBins lookup away from a root shell — same idea as SUID binaries, but granted through sudo rules instead of file permissions.
+This closes the loop on everything in this permissions/users cluster: `chmod`/`chown`/SUID control file-level privilege, `useradd`/`passwd`/`groups` control identity, and `sudo` is the bridge that actually lets a normal user *exercise* elevated privilege in a controlled way — misconfigured sudo rules are one of the most common real-world privesc findings you'll write up.
+
+**Notes / gotchas:**
+`sudo` prompts for **your own** password, not root's — a common point of confusion for beginners coming from Windows UAC intuition. Also, `sudo -l` without any password set up correctly will just prompt you or fail — on a target where you don't know the current user's password, you can't run `sudo -l` at all, so it's specifically useful on your own lab or once you've already got valid creds.
+
+---
