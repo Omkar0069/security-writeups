@@ -1,3 +1,5 @@
+**SQL injection [Cheetsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)**
+
 # [SQL injection] — [SQL injection UNION attack, determining the number of columns returned by the query]
 
 ## Summary
@@ -12,3 +14,35 @@ To solve the lab, determine the number of columns returned by the query by perfo
 2. Malipulate the URL bar with ' UNION SELECT NULL--
 3. If the page still remains the same or no changes to be found add one more NULL at the end which makes the query ' UNION SELECT NULL, NULL--
 4. Repeat this until you see any error message.
+
+# [SQL injection] — [SQL injection UNION attack, finding a column containing text]
+
+## Summary
+
+This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you first need to determine the number of columns returned by the query. You can do this using a technique you learned in a previous lab. The next step is to identify a column that is compatible with string data.
+
+The lab will provide a random value that you need to make appear within the query results. To solve the lab, perform a SQL injection UNION attack that returns an additional row containing the value provided. This technique helps you determine which columns are compatible with string data. 
+
+
+**Fix**
+1. Go to the any category for e.g., Pets.
+2. Change the parameter to find the number of column using the following query: ' ORDER BY 1-- then ORDER BY 2-- till you find the exact number of column.
+3. Once found the number of column replace each value using the provided value in the lab like: UNION SELECT 'value', NULL, NULL --
+4. Repeat this process until the exact position is found.
+
+# [SQL injection] — [SQL injection UNION attack, retrieving multiple values in a single column]
+
+## Summary
+
+ This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+
+The database contains a different table called users, with columns called username and password.
+
+To solve the lab, perform a SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.  
+
+**Fix**
+1.  Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, only one of which contain text, using a payload like the following in the category parameter:
+'+UNION+SELECT+NULL,'abc'--
+2.  Use the following payload to retrieve the contents of the users table:
+'+UNION+SELECT+NULL,username||'~'||password+FROM+users--
+3. Login with the credentials you found.
