@@ -46,3 +46,33 @@ To solve the lab, perform a SQL injection UNION attack that retrieves all userna
 2.  Use the following payload to retrieve the contents of the users table:
 '+UNION+SELECT+NULL,username||'~'||password+FROM+users--
 3. Login with the credentials you found.
+
+# [SQL injection] — [SQL injection attack, querying the database type and version on MySQL and Microsoft]
+
+## Summary
+
+This lab contains a SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
+
+To solve the lab, display the database version string.
+
+**Fix**
+1. Use Burp Suite to intercept and modify the request that sets the product category filter.
+2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter:
+'+UNION+SELECT+'abc','def'#
+3. Use the following payload to display the database version:
+'+UNION+SELECT+@@version,+NULL#
+
+# [SQL injection] — [SQL injection attack, listing the database contents on non-Oracle databases]
+
+## Summary
+
+ This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+The application has a login function, and the database contains a table that holds usernames and passwords. You need to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users.
+To solve the lab, log in as the administrator user. 
+
+**Fix**
+1. Use Burp Suite to intercept and modify the request that sets the product category filter.
+2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter:
+'+UNION+SELECT+'abc','def'#
+3. Use the following payload to display the database version:
+'+UNION+SELECT+@@version,+NULL#
