@@ -15,7 +15,7 @@ This room explains the basic components of a computer system and how they work t
 
 ## Exercises
 
-### Exercise 1 — [Exercise ]
+### Exercise 1 — [Computer Components]
 
 **Q1.** What role does the motherboard play in a computer?
 **Answer:** It connects and allow communication between all components
