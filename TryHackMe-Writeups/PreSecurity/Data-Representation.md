@@ -1,4 +1,4 @@
-# Inside a Computer System
+# Data Representation
 
 ## Overview
 
