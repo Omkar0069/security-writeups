@@ -40,7 +40,7 @@ JavaScript is used in most of the web pages that you visit on a day-to-day basis
 **Q2.** The secret is 10. What will our program display on the screen if the user makes a guess of 35?
 **Answer:** That number is out of range. Try again.
 
-### Exercise 1 — [Variables]
+### Exercise 4 — [Iterations]
 
 **Q1.** What is the name of the loop that we used in this task?
 **Answer:** while
