@@ -48,7 +48,7 @@ Understand how data is divided into smaller pieces and transmitted across a netw
 **Q1.** What type of DHCP packet is used by a device to retrieve an IP address?
 **Answer:** DHCP Discover
 
-**Q2.** What type of DHCP packet does a device send once it has been offered an IP address by the DHCP server?
+**Q2.** What type of DHCP packet does a device send once it has been offered an IP address by the DHCP server?"
 **Answer:** DHCP Request
 Finally, what is the last DHCP packet that is sent to a device from a DHCP server?
 **Answer:** DHCP ACK
