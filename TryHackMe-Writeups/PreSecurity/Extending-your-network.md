@@ -2,11 +2,14 @@
 
 ## Overview
 
-
+Learn about some of the technologies used to extend networks out onto the Internet and the motivations for this.
 
 ## What I Learned
 
-
+- Port Forwarding
+- Firewalls
+- VPN Basics
+- LAN Networking Devices
 
 ## Exercises
 
@@ -41,59 +44,10 @@
 **Q2.** What are the two different layers of switches? Separate these by a comma I.e.: Layer X,Layer Y
 **Answer:** Layer 2, Layer 3
 
-### Exercise 5 — [Layer 4 - Transport]
-
-**Q1.** What is the name of this Layer?
-**Answer:** Transport
-
-**Q2.** What does TCP stand for?
-**Answer:** Transmission Control Protocol
-
-**Q3.** What does UDP stand for?
-**Answer:** User Datagram Protocol
-
-**Q4.** What protocol guarantees the accuracy of data?
-**Answer:** TCP
-
-**Q5.** What protocol doesn't care if data is received or not by the other device?
-**Answer:** UDP
-
-**Q6.** What protocol would an application such as an email client use?
-**Answer:** TCP
-
-**Q7.** What protocol would an application that downloads files use?
-**Answer:** TCP
-
-**Q8.** What protocol would an application that streams video use?
-**Answer:** UCP
-
-### Exercise 6 — [Layer 5 - Session]
-
-**Q1.** What is the name of this layer?
-**Answer:** Session
-
-**Q2.** What is the technical term for when a connection is succesfully established?
-**Answer:** Session
-
-### Exercise 7 — [Layer 6 - Presentation]
-
-**Q1.** What is the name of this Layer?
-**Answer:** Presentation
-
-**Q2.** What is the main purpose that this Layer acts as?
-**Answer:** Translator
-
-### Exercise 8 — [Layer 7 - Application]
-
-**Q1.** What is the name of this Layer?
-**Answer:** Application
-
-**Q2.** What is the technical term that is given to the name of the software that users interact with?
-**Answer:** Graphical User Interface
 
 ## Key Takeaways
 
-
+The more you know about networking the better.
 
 ## Notes
 
