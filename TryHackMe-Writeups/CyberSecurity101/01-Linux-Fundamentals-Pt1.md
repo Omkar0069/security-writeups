@@ -10,7 +10,7 @@ Embark on the journey of learning the fundamentals of Linux. Learn to run some o
 
 ## Exercises
 
-### Exercise 1 — [Basic Terminologies]
+### Exercise 1 — [Introduction]
 
 **Q1.** Run ls in the current folder. How many folders are there?
 **Answer:** 4
@@ -21,7 +21,7 @@ Embark on the journey of learning the fundamentals of Linux. Learn to run some o
 **Q2.** Use cat to read the file within this folder. What does it say?
 **Answer:** password123
 
-### Exercise 2 — [Web Communication]
+### Exercise 2 — [Practical]
 
 **Q1.** After using grep THM access.log a flag was found. What is the flag?
 **Answer:** THM{ACCESS}
