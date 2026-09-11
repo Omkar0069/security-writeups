@@ -6,7 +6,7 @@ Power-up your Linux skills and get hands-on with some common utilities that you 
 
 ## What I Learned
 
-
+Processes, cron, and stuff (Pretty hectic)
 
 ## Exercises
 
