@@ -68,7 +68,7 @@ This room will introduce the basic concepts and functionality provided by Active
 **Q3.** When using NetNTLM, is a user's password transmitted over the network at any point? (yay/nay)
 **Answer:** nay
 
-### Exercise 6 — [Permission 101]
+### Exercise 7 — [Permission 101]
 
 **Q1.** What is a group of Windows domains that share the same namespace called?
 **Answer:** tree
