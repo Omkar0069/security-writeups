@@ -6,7 +6,12 @@ Learn about scripting and the different types of Linux shells.
 
 ## What I Learned
 
-
+- Shell
+- Variables
+- Types
+- Conditional Statements
+- Loops
+- Scripting
 
 ## Exercises
 
