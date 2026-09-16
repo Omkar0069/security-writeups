@@ -7,7 +7,7 @@ Learn the basics of Wireshark and how to analyse protocols and PCAPs.
 
 ## What I Learned
 
-
+- Wireshark basics
 
 ## Exercises
 
@@ -78,7 +78,7 @@ Looking at the web server's response, what is the total number of artists?
 
 ## Key Takeaways
 
-
+Wireshark is very important for packet analysis and operation on them.
 
 ## Notes
 
