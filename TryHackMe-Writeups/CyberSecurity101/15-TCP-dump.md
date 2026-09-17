@@ -16,7 +16,7 @@ Learn how to use Tcpdump to save, filter, and display packets.
 **Q1.** What is the name of the library that is associated with tcpdump?
 **Answer:** libpcap
 
-### Exercise 2 — [Packet Dissection]
+### Exercise 2 — [Filtering Expressions]
 
 **Q1.** How many packets in traffic.pcap use the ICMP protocol?
 **Answer:** 26
@@ -27,7 +27,7 @@ Learn how to use Tcpdump to save, filter, and display packets.
 **Q3.** What hostname (subdomain) appears in the first DNS query?
 **Answer:** mirrors.rockylinux.org
 
-### Exercise 3 — [Packet Navigation]
+### Exercise 3 — [Advanced Filtering]
 
 **Q1.** How many packets have only the TCP Reset (RST) flag set?
 **Answer:** 57
@@ -35,15 +35,10 @@ Learn how to use Tcpdump to save, filter, and display packets.
 **Q2.**  What is the IP address of the host that sent packets larger than 15000 bytes?
 **Answer:** 185.117.80.53 (tcpdump -r traffic.pcap "len > 15000" -c 5 -n)
 
-### Exercise 4 — [Packet Filtering]
+### Exercise 4 — [Displaying Packets]
 
 **Q1.** What is the MAC address of the host that sent an ARP request?
 **Answer:** 52:54:00:7c:d3:5b
-
-### Exercise 5 — [SMTPS,POP3S and IMAPS]
-
-**Q1.** What would you use to connect the various company sites so that users at a remote office can access resources located within the main branch?
-**Answer:** VPN
 
 ## Key Takeaways
 
