@@ -29,7 +29,7 @@ An introduction to the main components of the Metasploit Framework.
 **Q3.** Who provided the auxiliary/scanner/ssh/ssh_login module?
 **Answer:** todb
 
-### Exercise 3 — [Navigation]
+### Exercise 3 — [Working with modules]
 
 **Q1.** How would you set the LPORT value to 6666?
 **Answer:** set lport 6666
