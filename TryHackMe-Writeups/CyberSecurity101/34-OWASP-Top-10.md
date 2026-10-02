@@ -15,7 +15,7 @@
 **Q1.** What does IAAA stand for?
 **Answer:** Identity, Authentication, Authorisation, Accountability
 
-### Exercise 2 — [AS01 Broken Access Control]
+### Exercise 2 — [A01 Broken Access Control]
 
 **Q1.** If you don't get access to more roles but can view the data of another users, what type of privilege escalation is this?
 **Answer:** Horizontal
@@ -23,7 +23,7 @@
 **Q2.** What is the note you found when viewing the user's account who had more than $ 1 million?
 **Answer:** THM{Found.the.Millionare!}
 
-### Exercise 3 — [AS07 Authentication Failure]
+### Exercise 3 — [A07 Authentication Failure]
 
 **Q1.** What is the flag on the admin user's dashboard?
 **Answer:** THM{Account.confusion.FTW!}
@@ -39,22 +39,22 @@
 **Q3.** What action did the attacker try to do with the account? List the endpoint the accessed.
 **Answer:** /supersecretadminstuff
 
-### Exercise 5 — [AS02 Security Misconfiguration]
+### Exercise 5 — [A02 Security Misconfiguration]
 
 **Q1.** What's the flag?
 **Answer:** THM{V3RB0S3_3RR0R_L34K}
 
-### Exercise 6 — [AS03 Software Supply Chain Failure]
+### Exercise 6 — [A03 Software Supply Chain Failure]
 
 **Q1.** What's the flag?
 **Answer:** THM{SUPPLY_CH41N_VULN3R4B1L1TY}
 
-### Exercise 7 — [AS04 Cryptographic Failure]
+### Exercise 7 — [A04 Cryptographic Failure]
 
 **Q1.** What's the flag?
 **Answer:** THM{CRYPTO_FAILURE_H4RDCOD3D_K3Y}, THM{WEAK_CRYPTO_FLAG}
 
-### Exercise 8 — [AS06 Insecure Design]
+### Exercise 8 — [A06 Insecure Design]
 
 **Q1.** What's the flag?
 **Answer:** THM{1NS3CUR3_D35IGN_4SSUMPT10N}
@@ -85,20 +85,20 @@ The IAAA is a simple way to think about how users and their actions are verified
 
 The three categories of OWASP Top 10:2025 discussed in this room relates to failures in how IAAA was implemented. Weaknesses here can be incredibly detrimental, as it can allow threat actors to either access the data of other users or gain more privileges than they are suppose to have.
 
-**AS01 Broken Access Control:** Broken Access Control happens when the server doesn't properly enforce who can access what on every request. A common occurance of this is IDOR(Insecure Direct Object Reference) where changing the parameters let you access someone else's data.
+**A01 Broken Access Control:** Broken Access Control happens when the server doesn't properly enforce who can access what on every request. A common occurance of this is IDOR(Insecure Direct Object Reference) where changing the parameters let you access someone else's data.
 
-**AS02 Security Misconfiguration** Security misconfiguration happens when systems, servers or applications are deployed with unsafe defaults, incomplete settings or exposed services. These are not code bugs but mistakes in environments, software, and network is set up. They create easy entry points for the attackers.
+**A02 Security Misconfiguration** Security misconfiguration happens when systems, servers or applications are deployed with unsafe defaults, incomplete settings or exposed services. These are not code bugs but mistakes in environments, software, and network is set up. They create easy entry points for the attackers.
 
 **AS03 Software Supply Chain Failure** Software supply chain failures happen when applications rely on components, libraries, services, or models that are compromised, outdated, or improperly verified. These weaknesses are not inherent in your code, but rather in the software and tools you depend on. Attackers exploit these weak links to inject malicious code, bypass security, or steal sensitive data.
 
-**AS04 Cryptographic Failure** Cryptographic failures happen when encryption is used incorrectly or not at all. This includes weak algorithms, hard-coded keys, poor key handling, or unencrypted sensitive data. These flaws let attackers access information that should be private.
+**A04 Cryptographic Failure** Cryptographic failures happen when encryption is used incorrectly or not at all. This includes weak algorithms, hard-coded keys, poor key handling, or unencrypted sensitive data. These flaws let attackers access information that should be private.
 
 **A05 Injection** Injection occurs when an application takes user input and mishandles it. Instead of processing the input securely, the application passes it directly into a system that can execute commands or queries, such as a database, a shell, a templating engine or API.
 
-**AS06 Insecure Design** Insecure design happens when flawed logic or architecture is built into a system from the start. These flaws stem from skipped threat modelling, no design requirements or reviews, or accidental errors.
+**A06 Insecure Design** Insecure design happens when flawed logic or architecture is built into a system from the start. These flaws stem from skipped threat modelling, no design requirements or reviews, or accidental errors.
 
-**AS07 Authentication Failure:** Authentication Failure happens when a user can't reliably verify or bind user's identity. Common issues include, username enumeration, weak guessable passwords, logic flaws in login/registration flow, insecure session or cookie handling.
+**A07 Authentication Failure:** Authentication Failure happens when a user can't reliably verify or bind user's identity. Common issues include, username enumeration, weak guessable passwords, logic flaws in login/registration flow, insecure session or cookie handling.
 
 **A08 Software or Data Integrity Failures** Software or Data Integrity Failures occur when an application relies on code, updates, or data it assumes are safe, without verifying their authenticity, integrity, or origin. This includes trusting software updates without verification, loading scripts or configuration files from untrusted sources, failing to validate data that impacts application logic, or accepting data such as binaries, templates, or JSON files without confirming whether it has been altered.
 
-**AS09 Logging & Alert Failures** When applications don't record or alert on security-relevant events, defender cannot detect or investigate the attacks. Good logging underpins accountability.
+**A09 Logging & Alert Failures** When applications don't record or alert on security-relevant events, defender cannot detect or investigate the attacks. Good logging underpins accountability.
