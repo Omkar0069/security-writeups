@@ -6,7 +6,7 @@ Explore defensive security, cyber infrastructure, and how to protect systems fro
 
 ## What I Learned
 
-
+- Basics knowlege about defensive security
 
 ## Key Takeaways
 
