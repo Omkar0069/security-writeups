@@ -105,6 +105,17 @@ UDP Ping Scan 	        sudo nmap -PU53,161,162 -sn 10.200.6.0/30
 
 ## Notes
 
+The 9 Steps of Nmap Scan:
+1. Enumerate the target.
+2. Discover live host.
+3. Reverse-DNS lookup.
+4. Scan ports.
+5. Detect Versions.
+6. Detect OS.
+7. Traceroute.
+8. Scripts.
+9. Write outputs.
+
 Nmap, short for Network Mapper, is free, open-source software released under the GPL license, created by Gordon Lyon (Fyodor), a network security expert and open-source programmer. Nmap is an industry-standard tool for mapping networks, identifying live hosts, and discovering running services. Nmap’s scripting engine can further extend its functionality, from fingerprinting services to exploiting vulnerabilities. A Nmap scan usually goes through the steps shown in the figure below, although many are optional and depend on the command-line arguments you provide.
 
 If you want to check the list of hosts that Nmap will scan, you can use nmap -sL TARGETS. 
