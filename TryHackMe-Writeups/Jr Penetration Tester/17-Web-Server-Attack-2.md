@@ -6,7 +6,7 @@ Attack IIS through fingerprinting, tilde enumeration, WebDAV shell upload, and l
 
 ## What I Learned
 
-
+- Not much just guided attacks
 
 ## Exercises
 
