@@ -92,7 +92,7 @@ How many requests will Intruder make using these payload sets in a Cluster bomb 
 
 ## Key Takeaways
 
-
+To summarize, Decoder allows you to encode and decode data, making it easier to read and understand the information being transferred. Comparer enables you to spot differences between two datasets, which can be pivotal in identifying vulnerabilities or anomalies. Sequencer helps in performing entropy analysis on tokens, providing insights into the randomness of their generation and, consequently, their security level. Organizer enables you to store and annotate copies of HTTP requests that you may want to revisit later.
 
 ## Notes
 
