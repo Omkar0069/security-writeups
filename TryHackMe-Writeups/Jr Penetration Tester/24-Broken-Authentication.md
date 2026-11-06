@@ -6,7 +6,10 @@ Learn how to defeat logins and other authentication mechanisms to allow you acce
 
 ## What I Learned
 
-
+- Mitigating Username Enumeration
+- Mitigating Brute Force
+- Mitigating Logic Flaw
+- Mitigating Cookie Tamepring
 
 ## Exercises
 
@@ -17,25 +20,42 @@ Learn how to defeat logins and other authentication mechanisms to allow you acce
 
 ### Exercise 2 — [Username Enumeration]
 
-**Q1.** What type of action is usually required for a CSRF attack to succeed?
-**Answer:** State-Changing
+**Q1.** What is the username starting with si*** ?
+**Answer:** simon
 
-### Exercise 3 — [Finding CSRF Vulerabilites]
+**Q2.** What is the username starting with st*** ?
+**Answer:** steve
 
-**Q1.** What HTTP request method do many developers incorrectly believe prevents CSRF?
-**Answer:** POST
+**Q3.** What is the username starting with ro**** ?
+**Answer:** robert
 
-**Q2.** What mechanism is commonly used to protect applications from CSRF attacks?
-**Answer:** CSRF Tokens
+### Exercise 3 — [Brute Forcing a Login Form]
 
-### Exercise 4 — [Exploitation Over Weak Tokens]
+**Q1.** What is the valid username and password (format: username/password)?
+**Answer:** steve/thunder
 
-**Q1.** In the above example, what is the name of the encoding scheme used by the developer for encoding CSRF tokens?
-**Answer:** base64
+### Exercise 4 — [Logic Flaw]
+
+**Q1.** What is the flag from Robert's support ticket?
+**Answer:** THM{AUTH_BYPASS_COMPLETE}
+
+### Exercise 5 — [Cookie Manipulation]
+
+**Q1.** What is the flag from changing the plain text cookie values?
+**Answer:** THM{COOKIE_TAMPERING}
+
+**Q2.** What is the value of the md5 hash 3b2a1053e3270077456a79192070aa78 ?
+**Answer:** 463729
+
+**Q3.** What is the base64 decoded value of VEhNe0JBU0U2NF9FTkNPRElOR30= ?
+**Answer:** THM{BASE64_ENCODING}
+
+**Q4.** Encode the following value using base64 {"id":1,"admin":true}
+**Answer:** eyJpZCI6MSwiYWRtaW4iOnRydWV9
 
 ## Key Takeaways
 
-
+Authentication bypass vulnerabilities are usually caused by poorly coded web applications or poorly configured session management. There are, however, secure coding methods and design patterns that reduce the chances of being vulnerable to each class of attack covered in this room.
 
 ## Notes
 
